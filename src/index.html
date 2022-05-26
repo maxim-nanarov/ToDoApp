@@ -1,18 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>SCSS</title>
-  <base href="/">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <title>Document</title>
 </head>
-<body>
-  <h1>SCSS</h1>
-  <div class="alert">
-    <button onclick="hi()">Say hi</button>
-  </div>
+<body id="body">
+    <div>
+        <div id="mainB">
+        <div class="Head" id="head">
+            <h1>ToDo List:</h1>
+            <input type="text" id="fname" placeholder="Type here your desierd task" name="fname"> 
+            <button id="ADD">ADD</button>
+        </div>
+        <div id="list">
+
+        </div>
+    </div>
+        <div>
+            <div id ="footer">
+                <button id="CleanAll" onclick="removeAll()">Clean All</button>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

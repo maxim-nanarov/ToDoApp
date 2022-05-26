@@ -6,10 +6,82 @@ body {
   font-family: $font-famaly;
   color: $text-color;
   background: $primary-color;
+  left: auto;
+  // display: flex;
+  flex-wrap:nowrap;
+  align-content: center;
+  padding: 150px 300px 150px 300px;
+  border-radius: 3px;
+  justify-content: space-between;
   .alert {
     padding: 5px;
     button {
-      outline: none;
+      outline:auto;
     }
   }
 }
+
+.Head{
+  background-color: rgb(78, 20, 20);
+  margin: auto;
+  border: #000 2px solid;
+}
+
+button{
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  .button:active {
+    background-color: #c85000;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .button:hover{
+    .button:focus {
+      background-color: #fb8332;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+}
+}
+
+.missionDiv{
+  font-size: 1.2rem;
+  background: rgb(255, 255, 255);
+  color: #000;
+  overflow-wrap: break-word;
+  border-radius: 1px;
+  padding: 4rem;
+  position: relative;
+}
+
+
+
+
+
