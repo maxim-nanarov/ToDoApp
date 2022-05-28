@@ -11,9 +11,11 @@ function loadPage(){
         let tasktotal: number = 1;
         window.localStorage.setItem('taskCount', '0');
         window.localStorage.setItem('tasktotal', '0');
+        
         } else{
             let taskCount: number = parseInt(window.localStorage.getItem('taskCount'));
             let tasktotal: number = parseInt(window.localStorage.getItem('tasktotal'));
+            allStorage();
         }
 console.log('loaded the page');
 console.log('this is the first local storage data there was: '+ window.localStorage.getItem('1'));
@@ -32,20 +34,20 @@ function addMission(theTask:string){
 
 //creats the task and all its elements. 
 let mainDiv = document.createElement('div'); 
-mainDiv.id = 'missionDiv' + taskCount.toString();
+mainDiv.id = 'missionDiv' + String(taskCount);
 mainDiv.className = 'missionDiv';                      //creates the div which will contain the rest of the elements
 let ButtonE = document.createElement('button');        //the edit button, the edit function is in line 50
-ButtonE.id = 'ButtonEdit'+taskCount.toString();
+ButtonE.id = 'ButtonEdit'+String(taskCount);
 console.log(ButtonE.id);
 ButtonE.innerText = 'Edit';
 ButtonE.setAttribute('onclick', "Edit(this.id)");
 let ButtonR = document.createElement('button');        //creats the remove button, its function is in line 78
 ButtonR.innerText = 'Remove';                               
 ButtonR.setAttribute('onclick', "Remove(this.id)")
-ButtonR.id = 'ButtonRemove'+ taskCount.toString();
+ButtonR.id = 'ButtonRemove'+ String(taskCount);
 console.log(ButtonR.id);
 let taskExpl = document.createElement('label');
-taskExpl.id = 'label'+taskCount;
+taskExpl.id = 'label'+String(taskCount);
 console.log('tasl expamole id: ' + taskExpl.id);
 taskExpl.textContent = theTask;
 let checkboxFinished = document.createElement('input'); 
@@ -57,7 +59,7 @@ mainDiv.appendChild(ButtonE);
 mainDiv.appendChild(ButtonR);
 document.getElementById('list').appendChild(mainDiv);
 // localStorage.setItem('taskCount', theTask);
-window.localStorage.setItem(taskCount.toString(), theTask);
+window.localStorage.setItem(String(taskCount), theTask);
 taskCount++;
 }
 
@@ -113,4 +115,18 @@ function removeAll(){
     let maindiv = document.createElement('div'); 
     maindiv.id = 'list'; 
     document.getElementById('body').appendChild(maindiv);
+}
+
+function allStorage() {
+
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        values.push( localStorage.getItem(keys[i]));
+        addMission(localStorage.getItem(keys[i]))
+    }
+
+    return values;
 }

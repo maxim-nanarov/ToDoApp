@@ -1,8 +1,19 @@
+var taskCount;
+var tasktotal;
 var bool = true;
-var taskCount = 1;
-var tasktotal = 1;
 window.addEventListener('load', loadPage);
 function loadPage() {
+    if (window.localStorage.getItem('taskCount') === undefined && window.localStorage.getItem('tasktotal') === undefined) {
+        var taskCount_1 = 1;
+        var tasktotal_1 = 1;
+        window.localStorage.setItem('taskCount', '0');
+        window.localStorage.setItem('tasktotal', '0');
+    }
+    else {
+        var taskCount_2 = parseInt(window.localStorage.getItem('taskCount'));
+        var tasktotal_2 = parseInt(window.localStorage.getItem('tasktotal'));
+        allStorage();
+    }
     console.log('loaded the page');
     console.log('this is the first local storage data there was: ' + window.localStorage.getItem('1'));
     document.getElementById('ADD').addEventListener('click', OnClick);
@@ -15,20 +26,20 @@ function OnClick() {
 function addMission(theTask) {
     //creats the task and all its elements. 
     var mainDiv = document.createElement('div');
-    mainDiv.id = 'missionDiv' + taskCount.toString();
+    mainDiv.id = 'missionDiv' + String(taskCount);
     mainDiv.className = 'missionDiv'; //creates the div which will contain the rest of the elements
     var ButtonE = document.createElement('button'); //the edit button, the edit function is in line 50
-    ButtonE.id = 'ButtonEdit' + taskCount.toString();
+    ButtonE.id = 'ButtonEdit' + String(taskCount);
     console.log(ButtonE.id);
     ButtonE.innerText = 'Edit';
     ButtonE.setAttribute('onclick', "Edit(this.id)");
     var ButtonR = document.createElement('button'); //creats the remove button, its function is in line 78
     ButtonR.innerText = 'Remove';
     ButtonR.setAttribute('onclick', "Remove(this.id)");
-    ButtonR.id = 'ButtonRemove' + taskCount.toString();
+    ButtonR.id = 'ButtonRemove' + String(taskCount);
     console.log(ButtonR.id);
     var taskExpl = document.createElement('label');
-    taskExpl.id = 'label' + taskCount;
+    taskExpl.id = 'label' + String(taskCount);
     console.log('tasl expamole id: ' + taskExpl.id);
     taskExpl.textContent = theTask;
     var checkboxFinished = document.createElement('input');
@@ -39,8 +50,8 @@ function addMission(theTask) {
     mainDiv.appendChild(ButtonE);
     mainDiv.appendChild(ButtonR);
     document.getElementById('list').appendChild(mainDiv);
-    localStorage.setItem('taskCount', theTask);
-    window.localStorage.setItem(taskCount.toString(), theTask);
+    // localStorage.setItem('taskCount', theTask);
+    window.localStorage.setItem(String(taskCount), theTask);
     taskCount++;
 }
 function Edit(id) {
@@ -52,8 +63,10 @@ function Edit(id) {
         var input = document.createElement("input");
         input.setAttribute("id", "toReplace" + id[id.length - 1]);
         input.setAttribute("value", content);
-        if (taskDiv)
+        if (taskDiv) {
             taskDiv.replaceWith(input);
+            window.localStorage.setItem(id[id.length - 1], content);
+        }
         bool = false;
     }
     else {
@@ -64,8 +77,10 @@ function Edit(id) {
         var newLable = document.createElement("label");
         newLable.setAttribute("id", "label" + taskCount.toString());
         newLable.innerHTML = newContent;
-        if (taskDiv)
+        if (taskDiv) {
             taskDiv.replaceWith(newLable);
+            window.localStorage.setItem(id[id.length - 1], newContent);
+        }
         bool = true;
     }
 }
@@ -89,4 +104,12 @@ function removeAll() {
     var maindiv = document.createElement('div');
     maindiv.id = 'list';
     document.getElementById('body').appendChild(maindiv);
+}
+function allStorage() {
+    var values = [], keys = Object.keys(localStorage), i = keys.length;
+    while (i--) {
+        values.push(localStorage.getItem(keys[i]));
+        addMission(localStorage.getItem(keys[i]));
+    }
+    return values;
 }
