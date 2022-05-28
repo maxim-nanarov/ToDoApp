@@ -4,6 +4,7 @@ var tasktotal = 1;
 window.addEventListener('load', loadPage);
 function loadPage() {
     console.log('loaded the page');
+    console.log('this is the first local storage data there was: ' + window.localStorage.getItem('1'));
     document.getElementById('ADD').addEventListener('click', OnClick);
 }
 function OnClick() {
@@ -39,6 +40,7 @@ function addMission(theTask) {
     mainDiv.appendChild(ButtonR);
     document.getElementById('list').appendChild(mainDiv);
     localStorage.setItem('taskCount', theTask);
+    window.localStorage.setItem(taskCount.toString(), theTask);
     taskCount++;
 }
 function Edit(id) {

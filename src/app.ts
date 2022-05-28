@@ -1,12 +1,22 @@
-
+let taskCount; 
+let tasktotal;
 let bool = true; 
-let taskCount:number = 1;
-let tasktotal: number = 1;
+
 
 window.addEventListener('load', loadPage)
 
 function loadPage(){
+    if(window.localStorage.getItem('taskCount') === undefined && window.localStorage.getItem('tasktotal') === undefined){
+        let taskCount:number = 1;
+        let tasktotal: number = 1;
+        window.localStorage.setItem('taskCount', '0');
+        window.localStorage.setItem('tasktotal', '0');
+        } else{
+            let taskCount: number = parseInt(window.localStorage.getItem('taskCount'));
+            let tasktotal: number = parseInt(window.localStorage.getItem('tasktotal'));
+        }
 console.log('loaded the page');
+console.log('this is the first local storage data there was: '+ window.localStorage.getItem('1'));
 document.getElementById('ADD').addEventListener('click', OnClick);
 
 }
@@ -46,7 +56,8 @@ mainDiv.appendChild(taskExpl);
 mainDiv.appendChild(ButtonE);
 mainDiv.appendChild(ButtonR);
 document.getElementById('list').appendChild(mainDiv);
-localStorage.setItem('taskCount', theTask);
+// localStorage.setItem('taskCount', theTask);
+window.localStorage.setItem(taskCount.toString(), theTask);
 taskCount++;
 }
 
@@ -59,7 +70,10 @@ function Edit(id: string) {
         let input = document.createElement("input");
         input.setAttribute("id", "toReplace" + id[id.length - 1]);
         input.setAttribute("value", content);
-        if(taskDiv) taskDiv.replaceWith(input);
+        if(taskDiv) {
+            taskDiv.replaceWith(input);
+            window.localStorage.setItem(id[id.length - 1], content);
+        }
         bool = false;
     } else {
         let taskDiv = document.getElementById("toReplace" + id[id.length - 1]);
@@ -70,7 +84,10 @@ function Edit(id: string) {
         let newLable = document.createElement("label");
         newLable.setAttribute("id", "label" + taskCount.toString());
         newLable.innerHTML = newContent;
-        if (taskDiv) taskDiv.replaceWith(newLable);
+        if(taskDiv) {
+            taskDiv.replaceWith(newLable);
+            window.localStorage.setItem(id[id.length - 1], newContent);
+        }
         bool = true;
     }
 }
