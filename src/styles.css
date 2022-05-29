@@ -1,25 +1,53 @@
-body {
+.mainB {
   font-family: Helvetica, sans-serif;
   color: white;
-  background: #333;
+  background-color: rgb(110, 82, 160);
   left: auto;
+  border-radius: 20px;
   flex-wrap: nowrap;
   align-content: center;
-  padding: 150px 300px 150px 300px;
-  border-radius: 3px;
-  justify-content: space-between;
+  margin: 0 400px 0 400px;
+  left: 30%;
+  top: 15%;
+  border: solid black 3px;
 }
-body .alert {
+.mainB .alert {
   padding: 5px;
 }
-body .alert button {
+.mainB .alert button {
   outline: auto;
 }
 
 .Head {
-  background-color: rgb(78, 20, 20);
-  margin: auto;
+  background-color: rgba(61, 162, 187, 0.317);
+  position: relative;
+  margin: 5% 20% 5% 20%;
   border: #000 2px solid;
+}
+.Head label {
+  margin: 0 30px;
+  color: black;
+  font: Stencil Std, fantasy;
+}
+.Head input {
+  background-color: #686868;
+  color: white;
+  padding: 14px 25%;
+  margin: 8px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.Head input input [type=text] select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.Head input input[type=submit]:hover {
+  background-color: #600000;
 }
 
 button {
@@ -65,10 +93,13 @@ button .button:hover .button:focus {
 
 .missionDiv {
   font-size: 1.2rem;
-  background: rgb(255, 255, 255);
+  background: rgb(0, 139, 137);
   color: #000;
   overflow-wrap: break-word;
-  border-radius: 1px;
-  padding: 4rem;
+  margin: 30px;
   position: relative;
+}
+
+body {
+  background-color: purple;
 }

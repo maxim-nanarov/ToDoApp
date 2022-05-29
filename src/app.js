@@ -15,7 +15,7 @@ function addMission(theTask) {
     //creats the task and all its elements. 
     var mainDiv = document.createElement('div');
     mainDiv.id = 'missionDiv' + String(taskCount);
-    mainDiv.className = 'missionDiv'; //creates the div which will contain the rest of the elements
+    mainDiv.classList.add('missionDiv'); //creates the div which will contain the rest of the elements
     var ButtonE = document.createElement('button'); //the edit button, the edit function is in line 50
     ButtonE.id = 'ButtonEdit' + String(taskCount);
     console.log(ButtonE.id);
