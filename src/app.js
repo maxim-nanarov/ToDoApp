@@ -1,21 +1,9 @@
 var taskCount;
-var tasktotal;
 var bool = true;
 window.addEventListener('load', loadPage);
 function loadPage() {
-    if (window.localStorage.getItem('taskCount') === undefined && window.localStorage.getItem('tasktotal') === undefined) {
-        var taskCount_1 = 1;
-        var tasktotal_1 = 1;
-        window.localStorage.setItem('taskCount', '0');
-        window.localStorage.setItem('tasktotal', '0');
-    }
-    else {
-        var taskCount_2 = parseInt(window.localStorage.getItem('taskCount'));
-        var tasktotal_2 = parseInt(window.localStorage.getItem('tasktotal'));
-        allStorage();
-    }
-    console.log('loaded the page');
-    console.log('this is the first local storage data there was: ' + window.localStorage.getItem('1'));
+    taskCount = window.localStorage.length;
+    allStorage();
     document.getElementById('ADD').addEventListener('click', OnClick);
 }
 function OnClick() {
@@ -36,7 +24,7 @@ function addMission(theTask) {
     var ButtonR = document.createElement('button'); //creats the remove button, its function is in line 78
     ButtonR.innerText = 'Remove';
     ButtonR.setAttribute('onclick', "Remove(this.id)");
-    ButtonR.id = 'ButtonRemove' + String(taskCount);
+    ButtonR.id = 'ButtonRemove' + taskCount;
     console.log(ButtonR.id);
     var taskExpl = document.createElement('label');
     taskExpl.id = 'label' + String(taskCount);
@@ -52,7 +40,7 @@ function addMission(theTask) {
     document.getElementById('list').appendChild(mainDiv);
     // localStorage.setItem('taskCount', theTask);
     window.localStorage.setItem(String(taskCount), theTask);
-    taskCount++;
+    taskCount = window.localStorage.length;
 }
 function Edit(id) {
     console.log('id = ' + id[id.length - 1]);
@@ -84,17 +72,10 @@ function Edit(id) {
         bool = true;
     }
 }
-// function finishEdit(id:any){
-//     let element = document.getElementById(id).previousSibling;
-//     let text = element.nodeValue;
-//     let newtask = document.createElement('label');
-//     newtask.nodeValue = text;
-//     document.getElementById(id).previousSibling.remove();
-//     document.getElementById(id).remove();
-//     document.getElementById("mainDiv").appendChild(newtask);
-// }
 function Remove(id) {
     var element = document.getElementById(id).parentElement;
+    console.log(id[id.length - 1]);
+    window.localStorage.removeItem((id[id.length - 1]).toString());
     element.remove();
 }
 //Todo: repair the remove all function, it moves up the footer div 
@@ -104,6 +85,7 @@ function removeAll() {
     var maindiv = document.createElement('div');
     maindiv.id = 'list';
     document.getElementById('body').appendChild(maindiv);
+    window.localStorage.clear();
 }
 function allStorage() {
     var values = [], keys = Object.keys(localStorage), i = keys.length;
