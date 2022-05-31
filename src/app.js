@@ -7,8 +7,6 @@ function loadPage() {
     document.getElementById('ADD').addEventListener('click', OnClick);
 }
 function OnClick() {
-    console.log('clicked');
-    console.log(document.getElementById('fname').value);
     addMission(document.getElementById('fname').value);
 }
 function addMission(theTask) {
@@ -35,8 +33,12 @@ function addMission(theTask) {
     checkboxFinished.name = "isFinished";
     mainDiv.appendChild(checkboxFinished);
     mainDiv.appendChild(taskExpl);
-    mainDiv.appendChild(ButtonE);
-    mainDiv.appendChild(ButtonR);
+    var buttondiv = document.createElement('div');
+    buttondiv.id = 'buttonDiv';
+    buttondiv.classList.add('buttonDiv');
+    buttondiv.appendChild(ButtonE);
+    buttondiv.appendChild(ButtonR);
+    mainDiv.appendChild(buttondiv);
     document.getElementById('list').appendChild(mainDiv);
     // localStorage.setItem('taskCount', theTask);
     window.localStorage.setItem(String(taskCount), theTask);

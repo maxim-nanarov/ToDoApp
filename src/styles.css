@@ -2,13 +2,11 @@
   font-family: Helvetica, sans-serif;
   color: white;
   background-color: rgb(110, 82, 160);
-  left: auto;
   border-radius: 20px;
-  flex-wrap: nowrap;
-  align-content: center;
-  margin: 0 400px 0 400px;
-  left: 30%;
-  top: 15%;
+  margin: auto;
+  width: 40%;
+  padding: 10px;
+  top: 40px;
   border: solid black 3px;
 }
 .mainB .alert {
@@ -20,20 +18,22 @@
 
 .Head {
   background-color: rgba(61, 162, 187, 0.317);
-  position: relative;
-  margin: 5% 20% 5% 20%;
   border: #000 2px solid;
+  align-items: center;
 }
 .Head label {
-  margin: 0 30px;
   color: black;
   font: Stencil Std, fantasy;
+  margin-left: auto;
+  margin-right: auto;
 }
 .Head input {
   background-color: #686868;
   color: white;
   padding: 14px 25%;
-  margin: 8px 8px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -96,8 +96,17 @@ button .button:hover .button:focus {
   background: rgb(0, 139, 137);
   color: #000;
   overflow-wrap: break-word;
-  margin: 30px;
+  margin: 80px;
+  padding: 20px;
+  border-radius: 30px;
+  white-space: nowrap;
   position: relative;
+}
+.missionDiv .buttonDiv {
+  position: relative;
+  margin-right: 5%;
+  top: 0%;
+  float: right;
 }
 
 body {
